@@ -1,0 +1,7 @@
+<h1>Welcomes index</h1>
+<%#= link_to  "SignIn",  new_manager_session_path %>
+<p><%= current_manager.email%></p>
+<%= link_to  "Manager Profile",  new_manager_profile_path(current_manager) %> ||
+<%= link_to  "screen", manager_screens_path(current_manager) %> ||
+<%= link_to  "Movie", manager_movies_path(current_manager) %> ||
+<%= link_to  "Actors", new_manager_movie_actor_path(current_manager, current_manager.movies) %>

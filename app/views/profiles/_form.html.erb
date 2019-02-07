@@ -1,0 +1,12 @@
+<%= form_for [current_manager, @profile] do |form|%>
+    <%= form.label :name%><br>
+    <%= form.text_field :name%><br>
+
+    <%= form.label :contact%><br>
+    <%= form.number_field :contact%><br>
+
+    <%= form.label :address%><br>
+    <%= form.text_area :address%><br>
+
+    <%= form.submit%>
+<% end %>

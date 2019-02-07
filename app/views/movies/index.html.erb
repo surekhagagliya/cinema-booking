@@ -1,0 +1,16 @@
+<h1> Movies Index Page!</h1>
+<%= link_to  "New Movie",  new_manager_movie_path(current_manager) %>
+<table class='table'>
+    <tr>
+        <th>Name:</th>
+        <th>Type:</th>
+        <th>votes:</th>
+    </tr>
+    <% @movies.each do |screen| %>
+        <tr>
+            <td><%= screen.name%></td>
+            <td><%= screen.movie_type%></td>
+            <td><%= screen.votes%></td>
+        </tr>
+    <% end %>
+</div>

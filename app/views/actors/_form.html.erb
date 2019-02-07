@@ -1,0 +1,9 @@
+<%= form_for [current_manager, @actor] do |actor|%>
+    <%= actor.label :name%>
+    <%= actor.text_field :name%><br>
+
+    <%= actor.label :role%>
+    <%= actor.text_field :role%><br>
+
+    <%= actor.submit%>
+<% end %>

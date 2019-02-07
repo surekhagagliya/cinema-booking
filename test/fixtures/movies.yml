@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  type: 
+  votes: 1
+  rates: 1
+  summary: MyText
+  static_review: MyText
+  trailer: MyString
+  screen_number: 1
+  release_date: 2019-02-07
+  end_date: 2019-02-07
+  time: 2019-02-07 18:40:28
+  manager: one
+
+two:
+  name: MyString
+  type: 
+  votes: 1
+  rates: 1
+  summary: MyText
+  static_review: MyText
+  trailer: MyString
+  screen_number: 1
+  release_date: 2019-02-07
+  end_date: 2019-02-07
+  time: 2019-02-07 18:40:28
+  manager: two

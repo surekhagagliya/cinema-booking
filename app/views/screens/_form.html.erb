@@ -1,0 +1,9 @@
+<%= form_for [current_manager, @screen] do |form|%>
+    <%= form.label :name%><br>
+    <%= form.text_field :name%><br>
+
+    <%= form.label :number%><br>
+    <%= form.number_field :number%><br><br>
+
+    <%= form.submit%>
+<% end %>
