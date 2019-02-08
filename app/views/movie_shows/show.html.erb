@@ -1,0 +1,9 @@
+<div class="jumbotron">
+    <strong>Date: </strong>
+    <%= @movie_show.date%><br>
+
+    <strong>Time: </strong>
+    <%= @movie_show.time%><br>
+
+    <%= link_to  "Add Seat Booking", new_manager_screen_movie_show_seat_booking_path(current_manager, current_manager.screens, @movie_show) %>
+</div>

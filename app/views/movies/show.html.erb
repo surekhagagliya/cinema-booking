@@ -1,5 +1,54 @@
-<strong>name : </strong>
-<%= @movie.name%><br>
+<div class="jumbotron">
+    <%= image_tag(@movie.cover_image, class: 'img-fluid rounded img2') if @movie.cover_image.attached? %><br>
+    <br><br>
+    <%= image_tag(@movie.image, class: 'rounded img') if @movie.image.attached? %><br>
 
-<strong>type: </strong>
-<%= @movie.movie_type%><br>
+    <strong>name : </strong>
+    <%= @movie.name%><br>
+
+    <strong>type: </strong>
+    <%= @movie.movie_type%><br>
+
+    <strong>price: </strong>
+    <%= @movie.price%><br>
+
+    <strong>summary: </strong>
+    <%= @movie.summary%><br>
+
+    <strong>static_review: </strong>
+    <%= @movie.static_review%><br>
+
+    <strong>trailer: </strong>
+    <%= @movie.trailer%><br>
+
+    <strong>Screen Number: </strong>
+    <%= @movie.screen.number%><br>
+
+    <strong>Release Date: </strong>
+    <%= @movie.release_date%><br>
+
+    <strong>End Date: </strong>
+    <%= @movie.end_date%><br>
+</div><br>
+<div class="jumbotron">
+    <%= link_to  "Add Actors", new_manager_movie_actor_path(current_manager, @movie) %>||
+    <%= link_to  "Add Votes", new_manager_movie_vote_path(current_manager, @movie) %><br><br>
+</div><br>
+<div class="jumbotron">
+    <table class='table'>
+        <tr>
+            <th>Name:</th>
+            <th>Role:</th>
+            <th colspan = '2'>Action</th>
+        </tr>
+        <% @movie.actors.each do |actor| %>
+            <tr>
+                <td><%= actor.name%></td>
+                <td><%= actor.role%></td>
+                <td><%= link_to  "show", manager_movie_actor_path(current_manager, @movie, actor) %></td>
+                <td><%= link_to  "delete", manager_movie_actor_path(current_manager, @movie, actor),
+                                        method: :delete,
+                                        data: {confirm:'Are You Sure Delete This Movie'} %></td>
+            </tr>
+        <% end %>
+</div>

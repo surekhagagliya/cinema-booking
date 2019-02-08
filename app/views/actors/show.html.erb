@@ -1,2 +1,9 @@
-Name: <% @actor.name%><br>
-Role: <% @actor.role%>
+<div class="jumbotron">
+    <strong>name:</strong>
+    <%= @actor.name%><br>
+
+    <%= image_tag(@actor.actor_image, class: 'rounded-circle') if @actor.actor_image.attached? %><br>
+
+    <strong>Role:</strong>
+    <%= @actor.role%><br>
+</div>

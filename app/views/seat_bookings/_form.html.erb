@@ -1,0 +1,8 @@
+<%= form_for [current_manager, @movie_show.screen, @movie_show, @seat_booking] do |form|%>
+    <div class="form-group">
+        <%(1..240).each do |seat| %>
+            <%= check_box_tag (:seat_no) %>
+        <% end %><br>
+    </div>
+    <%= form.submit 'Booking', class: 'btn btn-success'%>
+<% end %>

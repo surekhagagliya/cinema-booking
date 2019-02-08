@@ -1,12 +1,15 @@
 <%= form_for [current_manager, @profile] do |form|%>
-    <%= form.label :name%><br>
-    <%= form.text_field :name%><br>
-
-    <%= form.label :contact%><br>
-    <%= form.number_field :contact%><br>
-
-    <%= form.label :address%><br>
-    <%= form.text_area :address%><br>
-
-    <%= form.submit%>
+    <div class="form-group">
+        <%= form.label :name%><br>
+        <%= form.text_field :name, class:'form-control', placeholder:'Enter Your Name'%><br>
+    <div>
+    <div class="form-group">
+        <%= form.label :contact%><br>
+        <%= form.number_field :contact, class:'form-control', placeholder:'Enter Number'%><br>
+    <div>
+    <div class="form-group">
+        <%= form.label :address%><br>
+        <%= form.text_area :address, class:'form-control', placeholder:'Enter Address'%><br>
+    <div>
+    <%= form.submit 'submit', class:'btn btn-primary'%>
 <% end %>

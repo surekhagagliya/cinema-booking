@@ -1,9 +1,11 @@
 <%= form_for [current_manager, @screen] do |form|%>
-    <%= form.label :name%><br>
-    <%= form.text_field :name%><br>
-
-    <%= form.label :number%><br>
-    <%= form.number_field :number%><br><br>
-
-    <%= form.submit%>
+    <div class="form-group">
+        <%= form.label :name%>
+        <%= form.text_field :name, class:'form-control', placeholder:'Enter Screen Name'%>
+    <div>
+    <div class="form-group">
+        <%= form.label :number%>
+        <%= form.number_field :number, class:'form-control', placeholder:'Enter Screen Number'%>
+    </div>
+    <%= form.submit 'submit', class: 'btn btn-success' %>
 <% end %>

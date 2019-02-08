@@ -1,16 +1,21 @@
 <h1> Movies Index Page!</h1>
 <%= link_to  "New Movie",  new_manager_movie_path(current_manager) %>
-<table class='table'>
-    <tr>
-        <th>Name:</th>
-        <th>Type:</th>
-        <th>votes:</th>
-    </tr>
-    <% @movies.each do |screen| %>
-        <tr>
-            <td><%= screen.name%></td>
-            <td><%= screen.movie_type%></td>
-            <td><%= screen.votes%></td>
-        </tr>
-    <% end %>
+<div class="jumbotron">
+    <div class='row'>
+        <% @movies.each do |movie| %>
+            <div class="col-md-4">
+                <%= image_tag(movie.image, class: 'rounded img') if movie.image.attached?%><br>
+                <div class="card-body">
+                    <h4 class="card-title"><Strong>Name:</strong><%= movie.name%></h4>
+                    <p class="card-text"><Strong>Movie Type:</strong><%= movie.movie_type%></p>
+                    <%= link_to  "show", manager_movie_path(current_manager, movie),class: 'btn btn-primary' %>
+                    <%= link_to  "edit", edit_manager_movie_path(current_manager, movie),class: 'btn btn-warning' %>
+                    <%= link_to  "delete", manager_movie_path(current_manager, movie),
+                                        method: :delete,
+                                        data: {confirm:'Are You Sure Delete This Movie'},class: 'btn btn-danger' %>
+                </div>
+            </div>
+        <% end %>
+    </div>
 </div>
+

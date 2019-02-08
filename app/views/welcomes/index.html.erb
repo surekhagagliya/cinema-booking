@@ -1,7 +1,31 @@
-<h1>Welcomes index</h1>
-<%#= link_to  "SignIn",  new_manager_session_path %>
-<p><%= current_manager.email%></p>
-<%= link_to  "Manager Profile",  new_manager_profile_path(current_manager) %> ||
-<%= link_to  "screen", manager_screens_path(current_manager) %> ||
-<%= link_to  "Movie", manager_movies_path(current_manager) %> ||
-<%= link_to  "Actors", new_manager_movie_actor_path(current_manager, current_manager.movies) %>
+<nav class="navbar navbar-expand-sm bg-dark rounded navbar-dark">
+    <a class='navbar-brand' href = "<%root_path%>">Welcome</a>
+    <!-- Links -->
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+        <%= link_to  "Profile",  new_manager_profile_path(current_manager),class:'nav-link' %>
+        </li>
+        <li class="nav-item active">
+            <%= link_to  "screen", manager_screens_path(current_manager), class: 'nav-link' %>
+        </li>
+        <li class="nav-item active">
+            <%= link_to  "Movie", manager_movies_path(current_manager), class: 'nav-link' %> 
+        </li>
+        <li class="nav-item">
+            <%= link_to  "SignOut", destroy_manager_session_path, method: :delete, class: 'btn btn-success btn_signout'%>
+        </li>
+    </ul>
+</nav>
+<br>
+<div class='row'>
+    <% @movies.each do |movie| %>
+        <div class="col-md-4">
+            <%= image_tag(movie.image, class: 'rounded img') if movie.image.attached?%><br>
+            <div class="card-body">
+                <h4 class="card-title"><%= movie.name%></h4>
+                <p class="card-text"><%= movie.movie_type%></p>
+                <%= link_to  "show", manager_movie_path(current_manager, movie),class: 'btn btn-primary' %>
+            </div>
+        </div>
+    <% end %>
+</div>

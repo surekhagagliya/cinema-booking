@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_07_131108) do
+ActiveRecord::Schema.define(version: 2019_02_08_094522) do
+
+  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "actors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -33,18 +54,25 @@ ActiveRecord::Schema.define(version: 2019_02_07_131108) do
     t.index ["reset_password_token"], name: "index_managers_on_reset_password_token", unique: true
   end
 
+  create_table "movie_shows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "date"
+    t.time "time"
+    t.bigint "screen_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["screen_id"], name: "index_movie_shows_on_screen_id"
+  end
+
   create_table "movies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "movie_type"
-    t.integer "votes"
-    t.integer "rates"
+    t.integer "price"
     t.text "summary"
     t.text "static_review"
     t.string "trailer"
-    t.integer "screen_number"
+    t.integer "screen_id"
     t.date "release_date"
     t.date "end_date"
-    t.time "time"
     t.bigint "manager_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -70,8 +98,28 @@ ActiveRecord::Schema.define(version: 2019_02_07_131108) do
     t.index ["manager_id"], name: "index_screens_on_manager_id"
   end
 
+  create_table "seat_bookings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "seat_no"
+    t.bigint "movie_show_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_show_id"], name: "index_seat_bookings_on_movie_show_id"
+  end
+
+  create_table "votes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "per_votes"
+    t.bigint "movie_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_votes_on_movie_id"
+  end
+
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "actors", "movies"
+  add_foreign_key "movie_shows", "screens"
   add_foreign_key "movies", "managers"
   add_foreign_key "profiles", "managers"
   add_foreign_key "screens", "managers"
+  add_foreign_key "seat_bookings", "movie_shows"
+  add_foreign_key "votes", "movies"
 end

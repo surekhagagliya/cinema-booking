@@ -1,36 +1,62 @@
 <%= form_for [current_manager, @movie] do |movie| %>
-    <%= movie.label :name%>
-    <%= movie.text_field :name%><br>
-
-    <%= movie.label 'type' %>
-    <%= movie.text_field :movie_type%><br>
-
-    <%= movie.label 'Votes' %>
-    <%= movie.number_field :votes%><br>
-
-    <%= movie.label 'Rates' %>
-    <%= movie.number_field :rates%><br>
-
-    <%= movie.label 'Summary' %>
-    <%= movie.text_area :summary%><br>
-
-    <%= movie.label 'Static Review'%>
-    <%= movie.text_area :static_review%><br>
-
-    <%= movie.label 'Trailer'%>
-    <%= movie.text_field :trailer%><br>
-
-    <%= movie.label 'Screen Number'%>
-    <%= movie.number_field :screen_number%><br>
-
-    <%= movie.label 'Release Date'%>
-    <%= movie.date_field :release_date%><br>
-
-    <%= movie.label 'End Date'%>
-    <%= movie.date_field :end_date%><br>
-
-    <%= movie.label 'Time'%>
-    <%= movie.time_field :time%><br>
-
-    <%= movie.submit%>
+    <div class="form-group">
+        <% if @movie.errors.any? %>
+            <div id="error_explanation">
+                <h2>
+                    <%= pluralize(@movie.errors.count, "error") %> prohibited
+                    this Movie from being saved:
+                </h2>
+                <ul>
+                    <% @movie.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+    </div>
+    <div class="form-group">
+        <%= movie.label 'Select Cover Image'%><br>
+        <%= movie.file_field :cover_image %>
+    </div>
+    <div class="form-group">
+        <%= movie.label 'Select Movie Image'%><br>
+        <%= movie.file_field :image %>
+    </div>
+    <div class="form-group">
+        <%= movie.label 'Name'%>
+        <%= movie.text_field :name, class:'form-control', placeholder:'Enter Movie Name'%>
+    <div>
+    <div class="form-group">
+        <%= movie.label 'Movie Type' %>
+        <%= movie.text_field :movie_type, class:'form-control', placeholder:'Enter Movie Type'%>
+    </div>
+    <div class="form-group">
+        <%= movie.label 'Price' %>
+        <%= movie.number_field :price, class:'form-control', placeholder:'Enter Price'%>
+    </div>
+    <div class="form-group">
+        <%= movie.label 'Summary' %>
+        <%= movie.text_area :summary, class:'form-control', placeholder:'Add Some Summary.....'%>
+    </div>
+    <div class="form-group">
+        <%= movie.label 'Static Review'%>
+        <%= movie.text_area :static_review, class:'form-control', placeholder:'Add Review..'%>
+    </div>
+    <div class="form-group">
+        <%= movie.label 'Trailer'%>
+        <%= movie.text_field :trailer, class:'form-control', placeholder:'Enter Trailer'%>
+    </div>
+    <div class="form-group">
+        <%= movie.label 'Screen Number'%>
+        <%= movie.collection_select(:screen_id, Screen.all, :id, :number, include_blank: 'Select Any One', class: 'form-control')%>
+    </div>
+    <div class="form-group">
+        <%= movie.label 'Release Date'%>
+        <%= movie.date_field :release_date, class:'form-control'%>
+    </div>
+    <div class="form-group">
+        <%= movie.label 'End Date'%>
+        <%= movie.date_field :end_date, class:'form-control'%>
+    <div>
+    <%= movie.submit 'submit', class:'btn btn-success'%>
 <% end %>

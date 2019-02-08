@@ -1,20 +1,22 @@
-<h1>Screen Index</h1>
-<%= link_to  "Add Screen", new_manager_screen_path(current_manager) %><br><br>
-<table class='table'>
-    <tr>
-        <th>Name:</th>
-        <th>Number:</th>
-        <th colspan = '3'>Actions:</th>
-    </tr>
-    <% @screens.each do |screen| %>
+<div class="jumbotron">
+    <h1>Screen Index</h1>
+    <%= link_to  "Add Screen", new_manager_screen_path(current_manager) %><br><br>
+    <table class='table'>
         <tr>
-            <td><%= screen.name%></td>
-            <td><%= screen.number%></td>
-            <td><%= link_to  "show", manager_screen_path(current_manager, screen) %>
-            <td><%= link_to  "edit", edit_manager_screen_path(current_manager, screen) %>
-            <td><%= link_to  "delete", manager_screen_path(current_manager, screen),
-                        method: :delete,
-                        data: {confirm: 'Are You Sure Delete Screen'} %>
+            <th>Name:</th>
+            <th>Number:</th>
+            <th colspan = '3'>Actions:</th>
         </tr>
-    <% end %>
+        <% @screens.each do |screen| %>
+            <tr>
+                <td><%= screen.name%></td>
+                <td><%= screen.number%></td>
+                <td><%= link_to  "show", manager_screen_path(current_manager, screen) %>
+                <td><%= link_to  "edit", edit_manager_screen_path(current_manager, screen) %>
+                <td><%= link_to  "delete", manager_screen_path(current_manager, screen),
+                            method: :delete,
+                            data: {confirm: 'Are You Sure Delete Screen'} %>
+            </tr>
+        <% end %>
+    </table>
 </div>

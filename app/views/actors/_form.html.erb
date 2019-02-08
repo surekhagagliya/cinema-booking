@@ -1,9 +1,14 @@
-<%= form_for [current_manager, @actor] do |actor|%>
-    <%= actor.label :name%>
-    <%= actor.text_field :name%><br>
-
-    <%= actor.label :role%>
-    <%= actor.text_field :role%><br>
-
-    <%= actor.submit%>
+<%= form_for [current_manager, @movie, @actor] do |actor|%>
+    <div class="form-group">
+        <%= actor.file_field :actor_image%>
+    </div>
+    <div class="form-group">
+        <%= actor.label :name%>
+        <%= actor.text_field :name, class:'form-control', placeholder:' Enter Name'%>
+    </div>
+    <div class="form-group">
+        <%= actor.label :role%>
+        <%= actor.text_field :role, class:'form-control', placeholder:' Enter Name'%><br>
+    </div>
+    <%= actor.submit 'submit', class:'btn btn-success'%>
 <% end %>

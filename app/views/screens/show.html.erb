@@ -1,6 +1,10 @@
-<strong>name : </strong>
-<%= @screen.name%><br>
+<div class="jumbotron">
+    <strong>name : </strong>
+    <%= @screen.name%><br>
 
-<strong>number : </strong>
-<%= @screen.number%><br>
+    <strong>number : </strong>
+    <%= @screen.number%><br>
 
+    <%= link_to  "Select Movie", manager_movies_path(current_manager) %>
+    <%= link_to  "Add Movie Show", new_manager_screen_movie_show_path(current_manager, @screen) %>
+</div>

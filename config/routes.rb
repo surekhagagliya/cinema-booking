@@ -5,9 +5,14 @@ Rails.application.routes.draw do
 
   resources :managers do
     resources :profiles
-    resources :screens
+    resources :screens do
+      resources :movie_shows do
+        resources :seat_bookings
+      end
+    end
     resources :movies do
       resources :actors
+      resources :votes
     end
   end
 

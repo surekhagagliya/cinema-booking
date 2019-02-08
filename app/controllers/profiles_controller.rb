@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   #collback
+  before_action :authenticate_manager!
   before_action :find_profile_id, only: %i[show]
   
   def new

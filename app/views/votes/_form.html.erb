@@ -1,0 +1,7 @@
+<%= form_for [current_manager, @movie, @vote] do |vote|%>
+    <div class="form-group">
+        <%= vote.label 'Percentage Votes'%>
+        <%= vote.text_field :per_votes, class:'form-control', placeholder:'Give Votes(%)'%><br>
+    </div>
+    <%= vote.submit 'Add Votes', class:'btn btn-danger'%>
+<% end %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2019-02-08
+  time: 2019-02-08 12:49:09
+  screen: one
+
+two:
+  date: 2019-02-08
+  time: 2019-02-08 12:49:09
+  screen: two
